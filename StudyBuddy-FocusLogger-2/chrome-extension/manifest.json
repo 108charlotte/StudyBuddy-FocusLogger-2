@@ -1,0 +1,37 @@
+{
+    "manifest_version": 3,
+    "name": "StudyBuddy",
+    "version": "1.0",
+    "description": "A Chrome extension to help you focus on your study sessions.",
+    "permissions": [
+        "storage",
+        "activeTab",
+        "tabs",
+        "background"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": "StudyBuddy.png"
+    },
+    "icons": {
+        "16": "StudyBuddy.png",
+        "48": "StudyBuddy.png",
+        "128": "StudyBuddy.png"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["in_focus.html", "done.html"],
+            "matches": ["<all_urls>"]
+        }
+    ],
+    "commands": {
+        "_execute_action": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+F"
+            }
+        }
+    }
+}

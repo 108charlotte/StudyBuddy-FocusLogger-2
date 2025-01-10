@@ -12,7 +12,7 @@ def hello_world():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login(): 
-    return render_template('home.html')
+    return render_template('index.html')
 
 
 # Run the application

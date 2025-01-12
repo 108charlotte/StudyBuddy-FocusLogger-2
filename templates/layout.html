@@ -15,7 +15,7 @@
         <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
         <nav>
             <ul>
-                <li><a href="/index">Home</a></li>
+                <li><a href="/login">Login</a></li>
                     <li><a href="/home">Home</a></li>
                     <li><a href="/setup_instructions">Extension Setup Instructions</a></li>
                     <li><a href="/extension_download">Extension Download</a></li>
@@ -23,6 +23,18 @@
         </nav>
     </head>
     <body>
+        <div class="container">
+            <!--copilot-generated code to retrieve flashed messages-->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
         {% block title %}{% endblock %}
 
         {% block body %}{% endblock %}

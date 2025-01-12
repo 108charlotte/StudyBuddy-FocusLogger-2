@@ -10,3 +10,5 @@ I used a Medium article by MOSIN INAMDAR titled "How to make a Signup, Login, an
 I then used a tutorial from CodeShack titled "Login System with Python Flask and MySQL" in order to create the backend
 
 COPILOT created the venv environment and gave me step-by-step instructions on how to set it up. I also used its step-by-step instructions on connecting MySQL to vs code. 
+
+Used COPILOT and FLASK DOCUMENTATION on flashed messages in order to add message flashing to this application (here is the link to this specific article: https://flask.palletsprojects.com/en/stable/patterns/flashing/)

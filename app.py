@@ -69,7 +69,7 @@ def register():
 
     hashed_password = generate_password_hash(password)
 
-    return redirect("/login", message="Registered successfully")
+    return render_template("login.html", message="Registered successfully")
 
 
 # Run the application

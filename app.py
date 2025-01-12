@@ -2,22 +2,27 @@
 
 # imports other than Flask and render_template are not my own code (see README)
 from flask import Flask, flash, render_template, request, redirect, url_for, session
-from flask_mysqldb import MySQL
 from flask_login import current_user, login_required
-import MySQLdb.cursors, re, hashlib
 from werkzeug.security import generate_password_hash
+import sqlite3
 
 # Initialize the Flask application
 app = Flask(__name__)
-app.secret_key = "there_is_a_lopsided_octopus_somewhere_and_I_will_find_it"
 
-# code snippet from codeshack article
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'pythonlogin'
+# code snippet altered from medium article
+def create_users_database(): 
+    conn = sqlite3.connect('users.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE users (username TEXT, password TEXT, user_id INTEGER PRIMARY KEY AUTOINCREMENT)''')
+    conn.commit()
+    conn.close()
 
-mysql = MySQL(app)
+def create_session_database(): 
+    conn = sqlite3.connect('sessions.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE sessions (session_id TEXT PRIMARY KEY AUTOINCREMENT, user_id INTEGER, goal TEXT, duration TEXT, start_time TEXT)''')
+    conn.commit()
+    conn.close()
 
 @app.route('/')
 def hello_world():
@@ -39,12 +44,11 @@ def login():
     else: 
         return render_template('login.html', message='Please enter a password')
     
-    hash = password + app.secret_key
-    hash = hashlib.sha1(hash.encode())
-    password = hash.hexdigest()
+    password = generate_password_hash(password)
 
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('SELECT * FROM accounts WHERE username = %s AND password = %s', (username, password))
+    # code originally from codeshack, copilot changed it from MySQL to sqlite3
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM users WHERE username = ? AND password = ?', (username, password))
     account = cursor.fetchone()
 
     if account: 

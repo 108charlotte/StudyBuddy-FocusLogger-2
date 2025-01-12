@@ -26,9 +26,7 @@ def hello_world():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login(): 
-    message = ""
-    return render_template('login.html', msg=message)
-
+    return render_template('index.html', message='')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register(): 

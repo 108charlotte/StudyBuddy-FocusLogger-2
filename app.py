@@ -3,7 +3,7 @@
 # imports other than Flask and render_template are not my own code (see README)
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
-import MySQLdb.cursors
+from flask_login import current_user, login_required
 import MySQLdb.cursors, re, hashlib
 from werkzeug.security import generate_password_hash
 
@@ -23,9 +23,12 @@ mysql = MySQL(app)
 def hello_world():
     return render_template('index.html')
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login(): 
-    return render_template('index.html')
+    message = ""
+    return render_template('login.html', msg=message)
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register(): 
@@ -39,17 +42,10 @@ def register():
 
     hashed_password = generate_password_hash(password)
 
-    return redirect("/login")
+    message = ""
+    return redirect("/login", msg=message)
+
 
 # Run the application
 if __name__ == '__main__':
     app.run(debug=True)
-
-'''
-<li><a href="/login">Login</a></li>
-                    <li><a href="/register">Sign up</a></li>
-                    {%else%}
-                    <li><a href="/home">Login</a></li>
-                    <li><a href="/setup_instructions">Extension Setup Instructions</a></li>
-                    <li><a href="/extension_download">Extension Download</a></li>
-'''

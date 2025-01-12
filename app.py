@@ -9,24 +9,16 @@ import sqlite3
 # Initialize the Flask application
 app = Flask(__name__)
 
-# code snippet altered from medium article
-def create_users_database(): 
-    conn = sqlite3.connect('users.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE users (username TEXT, password TEXT, user_id INTEGER PRIMARY KEY AUTOINCREMENT)''')
-    conn.commit()
-    conn.close()
-
-def create_session_database(): 
-    conn = sqlite3.connect('sessions.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE sessions (session_id TEXT PRIMARY KEY AUTOINCREMENT, user_id INTEGER, goal TEXT, duration TEXT, start_time TEXT)''')
-    conn.commit()
-    conn.close()
-
 @app.route('/')
 def hello_world():
-    return render_template('index.html')
+    return render_template('index.html', logged_in=current_user.is_authenticated)
+
+# code from sitepoint article (see readme)
+@app.route('/logout')
+@login_required
+def logout(): 
+    logout_user()
+    return redirect(url_for('login'))
 
 # this code is based off of the codeshack article I mentioned in my readme
 @app.route('/login', methods=['GET', 'POST'])
@@ -47,6 +39,7 @@ def login():
     password = generate_password_hash(password)
 
     # code originally from codeshack, copilot changed it from MySQL to sqlite3
+    conn = sqlite3.connect('users.db')
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM users WHERE username = ? AND password = ?', (username, password))
     account = cursor.fetchone()
@@ -59,12 +52,15 @@ def login():
         flash('Logged in successfully!')
         return redirect(url_for('index'))
     
+    return render_template('login.html', message='Incorrect username or password')
+    
 
 
 @app.route('/register', methods=['GET', 'POST'])
 def register(): 
     if request.method == 'GET': 
         return render_template("register.html")
+    
     username = request.form.get("username")
     password = request.form.get("password")
         
@@ -73,8 +69,7 @@ def register():
 
     hashed_password = generate_password_hash(password)
 
-    message = ""
-    return redirect("/login", msg=message)
+    return redirect("/login", message="Registered successfully")
 
 
 # Run the application

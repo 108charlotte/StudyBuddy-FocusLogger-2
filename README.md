@@ -13,4 +13,6 @@ COPILOT created the venv environment and gave me step-by-step instructions on ho
 
 Used COPILOT and FLASK DOCUMENTATION on flashed messages in order to add message flashing to this application (here is the link to this specific article: https://flask.palletsprojects.com/en/stable/patterns/flashing/)
 
-Used a Medium article by Akanni Modupe Adegoke titled "Securing Your Flask Application: Hashing Passwords Tutorial" in order to alter my password hashing system from the other medium article since I was getting an error
+Used a Medium article by Akanni Modupe Adegoke titled "Securing Your Flask Application: Hashing Passwords Tutorial" in order to alter my password hashing system from the other medium article since I was getting an error. Databases also created using code snippet altered from medium article. 
+
+Used code from sitepoint article by Yemi Ojedapo titled "How to Perform User Authentication with Flask-Login" to finish creating the registration system. 

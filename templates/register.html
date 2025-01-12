@@ -2,9 +2,19 @@
 {% block head %} <title>Registration</title> {% endblock %}
 {% block title %} <h1>Register for StudyBuddy!!</h1> {% endblock %}
 {% block body %}
-
-{{ message}}
-<form>
-
+<form action="{{ url_for('register') }}" method="post">
+    <label for="username">
+        <i class="fas fa-user"></i>
+    </label>
+    <input type="text" name="username" placeholder="Username" id="username" required>
+    <label for="password">
+        <i class="fas fa-lock"></i>
+    </label>
+    <input type="password" name="password" placeholder="Password" id="password" required>
+    <label for="password">
+        <i class="fas fa-lock"></i>
+    </label>
+    <input type="password" name="password2" placeholder="Please re-enter your password" id="password2" required>
+    <input type="submit" value="Register">
 </form>
 {% endblock %}

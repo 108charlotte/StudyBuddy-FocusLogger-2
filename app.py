@@ -23,7 +23,9 @@ def hello_world():
 @app.route("/logout")
 @login_required
 def logout():
-    logout_user()
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM users WHERE user_id = ")
     return redirect(url_for("login"))
 
 

@@ -16,3 +16,7 @@ Used COPILOT and FLASK DOCUMENTATION on flashed messages in order to add message
 Used a Medium article by Akanni Modupe Adegoke titled "Securing Your Flask Application: Hashing Passwords Tutorial" in order to alter my password hashing system from the other medium article since I was getting an error. Databases also created using code snippet altered from medium article. 
 
 Used code from sitepoint article by Yemi Ojedapo titled "How to Perform User Authentication with Flask-Login" to finish creating the registration system. 
+
+I used chatgpt extensively to transition my code from the flask framework to a django one. 
+
+The tasks application is from harvard's CS50W lecture 3 on django

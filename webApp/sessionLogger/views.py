@@ -3,17 +3,7 @@ from django.urls import path
 import sqlite3
 
 def home(request):
-    return render(request, 'index.html')  # Adjust the template path as needed
-
-def login(request): 
-    if request.method == 'GET': 
-        return render(request, 'login.html')
-
-def register(request): 
-    # chatgpt code, since I don't know django yet
-    if request.method == 'GET': 
-        return render(request, 'register.html')
-    
+    return render(request, 'sessionLogger/index.html')  # Adjust the template path as needed
 
 '''
 # see README for how chatgpt was used in the creation of this code

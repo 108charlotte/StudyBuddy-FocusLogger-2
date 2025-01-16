@@ -21,9 +21,9 @@
                     <li><a href="/extension_download">Extension Download</a></li>
                     <li><a href="/logout">Logout</a></li>
                 {% else %}
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
-                    <li><a href="/tasks">Tasks</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                    <li><a href="{% url 'tasks' %}">Tasks</a></li>
                 {% endif %}
             </ul>
         </nav>

@@ -1,5 +1,5 @@
 """
-URL configuration for studyBuddy project.
+URL configuration for webApp project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views
+from views import home, login, register
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', home, name='home'),
+    path('login/', login, name='login'),
+    path('register/', register, name='register'), 
+    path('admin/', admin.site.urls),
 ]

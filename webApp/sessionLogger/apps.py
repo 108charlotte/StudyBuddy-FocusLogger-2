@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AuthorizationConfig(AppConfig):
+class SessionloggerConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'authorization'
+    name = 'sessionLogger'

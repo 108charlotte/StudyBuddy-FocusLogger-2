@@ -2,7 +2,7 @@
 {% block head %} <title>Registration</title> {% endblock %}
 {% block title %} <h1>Register for StudyBuddy!!</h1> {% endblock %}
 {% block body %}
-<form action="{{ url_for('register') }}" method="post">
+<form action="{% url 'register' %}" method="post">
     <label for="username">
         <i class="fas fa-user"></i>
     </label>

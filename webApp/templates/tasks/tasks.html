@@ -3,9 +3,16 @@
 
 {% block title %} <h1>Todo</h1> {% endblock %}
 {% block body %}
+<form action="{% url 'tasks' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="task" placeholder="Enter task">
+    <button type="submit">Add</button>
+</form>
 <ul>
     {% for task in tasks %}
     <li>{{ task }}</li>
+    {% empty %}
+    <p>No tasks yet</p>
     {% endfor %}
 </ul>
 {% endblock %}

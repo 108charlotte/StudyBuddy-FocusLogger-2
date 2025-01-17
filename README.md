@@ -20,3 +20,5 @@ Used code from sitepoint article by Yemi Ojedapo titled "How to Perform User Aut
 I used chatgpt extensively to transition my code from the flask framework to a django one. 
 
 The tasks application is from harvard's CS50W lecture 3 on django
+
+In order to create a user authentication system I used a Tech With Tim tutorial titled "Django Tutorial - Login, Logout and User Authentication"

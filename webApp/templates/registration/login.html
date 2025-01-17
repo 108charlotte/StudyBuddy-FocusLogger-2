@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block head %} <title>Login</title> {% endblock %}
+{% block title %} <h1>StudyBuddy Login</h1> {% endblock %}
+{% block body %}
+{% load crispy_forms_tags %}
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit">Login</button>
+    <p>Don't have an account? Create one <a href="{% url 'register' %}">here</a></p>
+</form>
+{% endblock %}

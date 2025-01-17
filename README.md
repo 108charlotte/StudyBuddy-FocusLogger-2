@@ -22,3 +22,5 @@ I used chatgpt extensively to transition my code from the flask framework to a d
 The tasks application is from harvard's CS50W lecture 3 on django
 
 In order to create a user authentication system I used a Tech With Tim tutorial titled "Django Tutorial - Login, Logout and User Authentication"
+
+In order to create the registration for that system I used the django-registration 5.1.0 documentation (linked here: https://django-registration.readthedocs.io/en/stable/)

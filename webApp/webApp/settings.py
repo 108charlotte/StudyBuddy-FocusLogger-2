@@ -33,9 +33,9 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'sessionLogger',
     'tasks', 
-    'authentication',
     'crispy_forms', 
     'crispy_bootstrap5', 
+    'django_registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -130,3 +130,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+REGISTRATION_OPEN = True
+REGISTRATION_SALT = "there_is_a_chaotic_lopsided_octopus_nearby"
+LOGOUT_REDIRECT_URL = "{% url 'login' %}"
+LOGIN_REDIRECT_URL = "{% url 'home' %}"

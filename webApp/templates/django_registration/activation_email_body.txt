@@ -1,0 +1,9 @@
+Thank you for signing up for a StudyBuddy account! 
+
+Your support means so much to me, and I hope that you enjoy this application and that it helps you to become more productive! 
+
+To activate your account, click the link below: 
+
+{{ activation_url }}
+
+This link will expire in {{ expiration_days }} days, so make sure to confirm your registration before then! 

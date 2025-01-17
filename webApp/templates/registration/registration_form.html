@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block head %} <title>Register</title> {% endblock %}
+{% block title %} <h1>Register for StudyBuddy</h1> {% endblock %}
+{% block body %}
+{% load crispy_forms_tags %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+</form>
+{% endblock %}

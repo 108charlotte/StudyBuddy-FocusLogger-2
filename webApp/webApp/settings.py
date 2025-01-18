@@ -36,6 +36,13 @@ INSTALLED_APPS = [
     'crispy_forms', 
     'crispy_bootstrap5', 
     'django_registration',
+    'django.contrib.sites',  # Required by two_factor
+    'two_factor',
+    'django_otp',
+    'django_otp.plugins.otp_static',
+    'django_otp.plugins.otp_totp',
+    'django_otp.plugins.otp_email',
+    'django_otp.plugins.otp_hotp',  # Optional
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -144,8 +151,11 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'studyBuddy621@gmail.com'  # Your Gmail address
 EMAIL_HOST_PASSWORD = 'oljw ghge qflo pjcr'  # The 16-character App Password
-DEFAULT_FROM_EMAIL = 'studyBuddy <studyBuddy621@gmail.com>'
+# DEFAULT_FROM_EMAIL = 'studyBuddy <studyBuddy621@gmail.com>'
 
+TWO_FACTOR_AUTHENTICATION_METHODS = ['email']
 
 # strong password: exOUa9M55buWJRj
 # django studyBuddy app password: oljw ghge qflo pjcr
+
+SITE_ID = 1

@@ -37,8 +37,6 @@ INSTALLED_APPS = [
     'crispy_bootstrap5', 
     'django_registration',
     'django.contrib.sites',  # Required by two_factor
-    'two_factor',
-    'django_otp',
     'django_otp.plugins.otp_static',
     'django_otp.plugins.otp_totp',
     'django_otp.plugins.otp_email',
@@ -49,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',  # App for managing authentication
 ]
 
 MIDDLEWARE = [
@@ -59,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'webApp.urls'
@@ -73,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -138,24 +140,31 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-ACCOUNT_ACTIVATION_DAYS = 7
-
-REGISTRATION_OPEN = True
-REGISTRATION_SALT = "there_is_a_chaotic_lopsided_octopus_nearby"
-LOGOUT_REDIRECT_URL = "{% url 'login' %}"
-LOGIN_REDIRECT_URL = "{% url 'home' %}"
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'studyBuddy621@gmail.com'  # Your Gmail address
-EMAIL_HOST_PASSWORD = 'oljw ghge qflo pjcr'  # The 16-character App Password
-# DEFAULT_FROM_EMAIL = 'studyBuddy <studyBuddy621@gmail.com>'
-
-TWO_FACTOR_AUTHENTICATION_METHODS = ['email']
-
 # strong password: exOUa9M55buWJRj
 # django studyBuddy app password: oljw ghge qflo pjcr
 
 SITE_ID = 1
+
+# settings.py
+
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+
+# Redirect URLs after login and logout
+LOGIN_REDIRECT_URL = "/"  # Where to redirect after login
+LOGOUT_REDIRECT_URL = '/accounts/login'  # Where to redirect after logout
+
+
+# settings.py
+
+ACCOUNT_AUTHENTICATE_METHOD = 'username'
+ACCOUNT_EMAIL_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+ACCOUNT_AUTHENTICATED_REDIRECT_URL = '/'  # Redirect if already authenticated
+ACCOUNT_LOGIN_ON_SIGNUP = True  # Log the user in immediately after signing up
+ACCOUNT_LOGOUT_ON_GET = True  # Optional: Log out the user on GET request (clear session data)
+
+# user password for admin: WgvMgT7455peJPJ

@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+  <title>Login</title>
+{% endblock %}
+
+{% block content %}
+  <h2>Login</h2>
+
+  <form method="post" class="login-form">
+    {% csrf_token %}
+    
+    <!-- Username and Password Form -->
+    {% if not request.user.is_authenticated %}
+      <div>
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" id="id_username" required>
+      </div>
+      <div>
+        <label for="id_password">Password:</label>
+        <input type="password" name="password" id="id_password" required>
+      </div>
+    {% endif %}
+    
+    <!-- Two-Factor Authentication Form -->
+    {% if request.user.is_authenticated %}
+      <div>
+        <label for="id_otp">Authentication Code:</label>
+        <input type="text" name="otp" id="id_otp" required>
+      </div>
+    {% endif %}
+    
+    <button type="submit">Submit</button>
+  </form>
+  
+  <!-- Error Handling for Invalid 2FA -->
+  {% if form.errors %}
+    <ul class="error-list">
+      {% for field in form %}
+        {% for error in field.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

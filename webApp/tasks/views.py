@@ -11,7 +11,7 @@ def tasks(request):
         new_task = request.POST["task"]
         task_list.append(new_task)
         request.session['task_list'] = task_list
-        request.session.movified = True
+        request.session.modified = True
 
     return render(request, "tasks/tasks.html", {
         "tasks": task_list

@@ -165,6 +165,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 ACCOUNT_AUTHENTICATED_REDIRECT_URL = '/'  # Redirect if already authenticated
 ACCOUNT_LOGIN_ON_SIGNUP = True  # Log the user in immediately after signing up
-ACCOUNT_LOGOUT_ON_GET = True  # Optional: Log out the user on GET request (clear session data)
+# ACCOUNT_LOGOUT_ON_GET = True  # Optional: Log out the user on GET request (clear session data)
 
 # user password for admin: WgvMgT7455peJPJ

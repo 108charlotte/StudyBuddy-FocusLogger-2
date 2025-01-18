@@ -18,12 +18,12 @@
         <nav>
             <ul>
                 {% if user.is_authenticated %}
-                    <li><a href="/home">Session Tracker</a></li>
+                    <li><a href="/">Session Tracker</a></li>
                     <li><a href="/tasks">Tasks</a></li>
                     <li><a href="/setup_instructions">Extension Setup Instructions</a></li>
                     <li><a href="/extension_download">Extension Download</a></li>
                     <li>
-                        <form action="{% url 'account_login' %}" method="post">
+                        <form action="/accounts/logout/" method="post">
                             {% csrf_token %}
                             <button type="submit">Logout</button>
                         </form>

@@ -7,7 +7,6 @@ def tasks(request):
     
     task_list = request.session["task_list"]
 
-# task are still global for some reason
     if request.method == "POST": 
         new_task = request.POST["task"]
         task_list.append(new_task)

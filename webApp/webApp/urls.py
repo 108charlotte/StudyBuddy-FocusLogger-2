@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.contrib.auth.views import LogoutView
 
+# password is joe with 8 0s
 urlpatterns = [
     path('', include('sessionLogger.urls')), 
     path('', include('tasks.urls')), 

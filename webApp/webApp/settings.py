@@ -137,3 +137,15 @@ REGISTRATION_OPEN = True
 REGISTRATION_SALT = "there_is_a_chaotic_lopsided_octopus_nearby"
 LOGOUT_REDIRECT_URL = "{% url 'login' %}"
 LOGIN_REDIRECT_URL = "{% url 'home' %}"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'studyBuddy621@gmail.com'  # Your Gmail address
+EMAIL_HOST_PASSWORD = 'oljw ghge qflo pjcr'  # The 16-character App Password
+DEFAULT_FROM_EMAIL = 'studyBuddy <studyBuddy621@gmail.com>'
+
+
+# strong password: exOUa9M55buWJRj
+# django studyBuddy app password: oljw ghge qflo pjcr
